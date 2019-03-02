@@ -2,28 +2,34 @@
 
 class EthernialThemeRmcommonPreload
 {
-
-    public function eventRmcommonGetStyles( $styles ){
+    public function eventRmcommonGetStyles($styles)
+    {
         global $etherStyles;
         $css_url = XOOPS_THEME_URL . '/ethernial/css';
 
-        if ( isset( $styles['bootstrap'] ) )
+        if (isset($styles['bootstrap'])) {
             $etherStyles[] = 'bootstrap.css';
+        }
 
-        if ( isset( $styles['ethernialstylesphpsrcstylescss'] ) )
+        if (isset($styles['ethernialstylesphpsrcstylescss'])) {
             $etherStyles[] = 'styles.css';
+        }
 
-        if ( isset( $styles['mywordsmywordscss'] ) )
+        if (isset($styles['mywordsmywordscss'])) {
             $etherStyles[] = 'mywords.css';
+        }
 
-        if ( isset( $styles['mywordsmwblockscss'] ) )
+        if (isset($styles['mywordsmwblockscss'])) {
             $etherStyles[] = 'mywords-blocks.css';
+        }
 
-        if ( isset( $styles['qpagesmaincss'] ) )
+        if (isset($styles['qpagesmaincss'])) {
             $etherStyles[] = 'qpages.css';
+        }
 
-        if ( isset( $styles['docsstandalonecss'] ) )
+        if (isset($styles['docsstandalonecss'])) {
             $etherStyles[] = 'docs.css';
+        }
 
         $styles['bootstrap']['url'] = $css_url . '/styles.php?src=' . implode(",", $etherStyles);
 
@@ -40,10 +46,11 @@ class EthernialThemeRmcommonPreload
         return $styles;
     }
 
-    public function eventRmcommonBlockSaved( $block ){
-
-        if ( $block->file != 'ethernial.tweetie.php' )
+    public function eventRmcommonBlockSaved($block)
+    {
+        if ($block->file != 'ethernial.tweetie.php') {
             return $block;
+        }
 
         $file = <<<CONFIG
 <?php
@@ -66,14 +73,10 @@ class EthernialThemeRmcommonPreload
 CONFIG;
 
         $options = $block->options;
-        $file = sprintf( $file, $options['consumer_key'], $options['consumer_secret'], $options['access_token'], $options['access_secret'] );
+        $file = sprintf($file, $options['consumer_key'], $options['consumer_secret'], $options['access_token'], $options['access_secret']);
 
-        file_put_contents( XOOPS_CACHE_PATH . '/tweetie.php', $file );
+        file_put_contents(XOOPS_CACHE_PATH . '/tweetie.php', $file);
 
         return $block;
-
     }
-
-
-
 }

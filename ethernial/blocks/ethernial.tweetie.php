@@ -2,19 +2,19 @@
 /**
  * Ethernial Theme
  * A XOOPS theme designed for XOOPS and Common Utilities using xThemes
- * 
+ *
  * Copyright © 2014 Eduardo Cortés
  * -----------------------------------------------------------------
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -27,16 +27,16 @@
  * @link         http://xoopsmexico.net
  */
 
-function ethernial_tweetie_show( $options ){
-
-    RMTemplate::get()->add_script( XOOPS_THEME_URL . '/ethernial/blocks/tweetie/tweetie.min.js' );
+function ethernial_tweetie_show($options)
+{
+    RMTemplate::get()->add_script(XOOPS_THEME_URL . '/ethernial/blocks/tweetie/tweetie.min.js');
     $params = '{';
-    foreach( $options as $name => $value ){
-
-        if ( $value == '' )
+    foreach ($options as $name => $value) {
+        if ($value == '') {
             continue;
+        }
 
-        switch( $name ){
+        switch ($name) {
             case 'consumer_key':
             case 'consumer_secret':
             case 'access_token':
@@ -58,20 +58,18 @@ function ethernial_tweetie_show( $options ){
                 $params .= ($params == '{' ? '' : ', ') . $name . ': ' . '"' . $value . '"';
                 break;
         }
-
     }
     $params .= ', apiPath: "' . XOOPS_THEME_URL . '/ethernial/blocks/tweetie/tweet.php"}';
 
     $block['params'] = $params;
-    $block['container'] = RMUtilities::randomString( 5, true, false, true, true );
+    $block['container'] = RMUtilities::randomString(5, true, false, true, true);
 
     return $block;
-
 }
 
-function ethernial_tweetie_edit( $options ){
-    ob_start();
-    ?>
+function ethernial_tweetie_edit($options)
+{
+    ob_start(); ?>
 
     <div class="panel panel-danger">
         <div class="panel-heading">
@@ -159,8 +157,8 @@ function ethernial_tweetie_edit( $options ){
 
     <div class="form-group">
         <label for="tw-template"><?php _e('Template', 'ethernial'); ?></label>
-        <textarea name="options[template]" class="form-control" id="tw-template" rows="4"><?php echo TextCleaner::getInstance()->specialchars( $options['template'] ); ?></textarea>
-        <small class="help-block"><?php echo sprintf( __('Format how you want to show your tweets. Feel free to add HTML, see %s table for more refrence.', 'ethernial'), '<a href="https://github.com/sonnyt/Tweetie#templating">' . __('this', 'ethernial') . '</a>' ); ?></small>
+        <textarea name="options[template]" class="form-control" id="tw-template" rows="4"><?php echo TextCleaner::getInstance()->specialchars($options['template']); ?></textarea>
+        <small class="help-block"><?php echo sprintf(__('Format how you want to show your tweets. Feel free to add HTML, see %s table for more refrence.', 'ethernial'), '<a href="https://github.com/sonnyt/Tweetie#templating">' . __('this', 'ethernial') . '</a>'); ?></small>
     </div>
 
     <?php
@@ -171,24 +169,25 @@ function ethernial_tweetie_edit( $options ){
 /**
  * Get the mywords categories
  */
-if(!function_exists("onfocus_mywords_categories")){
-    function onfocus_mywords_categories(){
-
+if (!function_exists("onfocus_mywords_categories")) {
+    function onfocus_mywords_categories()
+    {
         static $mw_categos;
         xoops_load('mwfunctions', 'mywords');
 
-        if(!empty($mw_categos)) return $mw_categos;
+        if (!empty($mw_categos)) {
+            return $mw_categos;
+        }
 
         $categos = array();
 
         MWFunctions::categos_list($categos);
 
-        $mw_categos[0] = __('All categories','onfocus');
-        foreach($categos as $cat){
+        $mw_categos[0] = __('All categories', 'onfocus');
+        foreach ($categos as $cat) {
             $mw_categos[$cat['id_cat']] = str_repeat("&#151;", $cat['indent']) . $cat['name'];
         }
 
         return $mw_categos;
-
     }
 }

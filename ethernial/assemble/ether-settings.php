@@ -2,19 +2,19 @@
 /**
  * ETHERNIAL THEME
  * A XOOPS theme designed for XOOPS and Common Utilities using xThemes
- * 
+ *
  * Copyright © 2014 Eduardo Cortés
  * -----------------------------------------------------------------
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -30,12 +30,12 @@
 /*               OPTIONS SECTIONS               */
 /* ============================================ */
 $sections = array(
-    'appearance'    => __('Appearance','ethernial'),
-    'cover'         => __('Cover','ethernial'),
-    'colors'         => __('Theme Colors','ethernial'),
-    'footer'         => __('Theme Footer','ethernial'),
-    'special'         => __('Special','ethernial'),
-    'build'         => __('Build','ethernial'),
+    'appearance'    => __('Appearance', 'ethernial'),
+    'cover'         => __('Cover', 'ethernial'),
+    'colors'         => __('Theme Colors', 'ethernial'),
+    'footer'         => __('Theme Footer', 'ethernial'),
+    'special'         => __('Special', 'ethernial'),
+    'build'         => __('Build', 'ethernial'),
 );
 
 /*                  APPERANCE                   */
@@ -197,7 +197,7 @@ $options['primary_hover'] = array(
 /* ============================================ */
 $options['bgfooter'] = array(
     'section'       => 'footer',
-    'caption'       => __('Footer background color:','ethernial'),
+    'caption'       => __('Footer background color:', 'ethernial'),
     'description'   => '',
     'type'          => 'color',
     'content'       => 'text',
@@ -206,7 +206,7 @@ $options['bgfooter'] = array(
 
 $options['footer_color'] = array(
     'section'       => 'footer',
-    'caption'       => __('Footer text color:','ethernial'),
+    'caption'       => __('Footer text color:', 'ethernial'),
     'description'   => '',
     'type'          => 'color',
     'content'       => 'text',
@@ -215,7 +215,7 @@ $options['footer_color'] = array(
 
 $options['footer_links'] = array(
     'section'       => 'footer',
-    'caption'       => __('Footer links color:','ethernial'),
+    'caption'       => __('Footer links color:', 'ethernial'),
     'description'   => '',
     'type'          => 'color',
     'content'       => 'text',
@@ -224,7 +224,7 @@ $options['footer_links'] = array(
 
 $options['footer_text'] = array(
     'section'       => 'footer',
-    'caption'       => __('Footer featured text:','ethernial'),
+    'caption'       => __('Footer featured text:', 'ethernial'),
     'description'   => '',
     'type'          => 'textbox',
     'content'       => 'text',
@@ -233,7 +233,7 @@ $options['footer_text'] = array(
 
 $options['footer_tagline'] = array(
     'section'       => 'footer',
-    'caption'       => __('Footer featured tagline:','ethernial'),
+    'caption'       => __('Footer featured tagline:', 'ethernial'),
     'description'   => '',
     'type'          => 'textbox',
     'content'       => 'text',
@@ -242,7 +242,7 @@ $options['footer_tagline'] = array(
 
 $options['social'] = array(
     'section'       => 'footer',
-    'caption'       => __('Social networks:','inception'),
+    'caption'       => __('Social networks:', 'inception'),
     'description'   => '',
     'type'          => 'slider',
     'content'       => 'array',
@@ -250,12 +250,12 @@ $options['social'] = array(
     'default'       => '',
     'options'       => array(
         'icon' => array(
-            'caption' => __('Specify the FontAwesome icon to use','inception'),
-            'description' => __('e.g. fa-twitter.','xthemes'),
+            'caption' => __('Specify the FontAwesome icon to use', 'inception'),
+            'description' => __('e.g. fa-twitter.', 'xthemes'),
             'type' => 'textbox'
         ),
         'link' => array(
-            'caption' => __('Specify the link for this item','inception'),
+            'caption' => __('Specify the link for this item', 'inception'),
             'description' => '',
             'type' => 'textbox'
         )
@@ -264,7 +264,7 @@ $options['social'] = array(
 
 $options['footer_bottom_links'] = array(
     'section'       => 'footer',
-    'caption'       => __('Footer bottom links color:','ethernial'),
+    'caption'       => __('Footer bottom links color:', 'ethernial'),
     'description'   => '',
     'type'          => 'color',
     'content'       => 'text',
@@ -273,7 +273,7 @@ $options['footer_bottom_links'] = array(
 
 $options['links'] = array(
     'section'       => 'footer',
-    'caption'       => __('Bottom info:','inception'),
+    'caption'       => __('Bottom info:', 'inception'),
     'description'   => '',
     'type'          => 'slider',
     'content'       => 'array',
@@ -281,7 +281,7 @@ $options['links'] = array(
     'default'       => '',
     'options'       => array(
         'item' => array(
-            'caption' => __('Input content for this element','inception'),
+            'caption' => __('Input content for this element', 'inception'),
             'description' => '',
             'type' => 'textarea'
         )
@@ -292,7 +292,7 @@ $options['links'] = array(
 /* ============================================ */
 $options['analytics'] = array(
     'section'       => 'special',
-    'caption'       => __('Analytics code:','ethernial'),
+    'caption'       => __('Analytics code:', 'ethernial'),
     'description'   => __('This code must be inserted in HEAD section of theme', 'ethernial'),
     'type'          => 'textarea',
     'content'       => 'text',
@@ -301,7 +301,7 @@ $options['analytics'] = array(
 
 $options['css'] = array(
     'section'       => 'special',
-    'caption'       => __('Custom CSS code:','ethernial'),
+    'caption'       => __('Custom CSS code:', 'ethernial'),
     'description'   => __('If you provide your own code, then don\'t forget to enable "Build Ethernial styles" in build tab.', 'ethernial'),
     'type'          => 'textarea',
     'content'       => 'text',
@@ -312,7 +312,7 @@ $options['css'] = array(
 /* ============================================ */
 $options['bootstrap'] = array(
     'section'       => 'build',
-    'caption'       => __('Build Bootstrap:','ethernial'),
+    'caption'       => __('Build Bootstrap:', 'ethernial'),
     'description'   => '',
     'type'          => 'yesno',
     'content'       => 'int',
@@ -320,7 +320,7 @@ $options['bootstrap'] = array(
 );
 $options['ethernial'] = array(
     'section'       => 'build',
-    'caption'       => __('Build Ethernial styles:','ethernial'),
+    'caption'       => __('Build Ethernial styles:', 'ethernial'),
     'description'   => '',
     'type'          => 'yesno',
     'content'       => 'int',
@@ -328,7 +328,7 @@ $options['ethernial'] = array(
 );
 $options['mywords'] = array(
     'section'       => 'build',
-    'caption'       => __('Build MyWords styles:','ethernial'),
+    'caption'       => __('Build MyWords styles:', 'ethernial'),
     'description'   => '',
     'type'          => 'yesno',
     'content'       => 'int',
@@ -341,4 +341,3 @@ $settings = array(
 );
 
 return $settings;
-

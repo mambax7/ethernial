@@ -16,7 +16,7 @@
     $list_slug = filter_input(INPUT_GET, 'list_slug', FILTER_SANITIZE_SPECIAL_CHARS);
     $hashtag = filter_input(INPUT_GET, 'hashtag', FILTER_SANITIZE_SPECIAL_CHARS);
     
-	if(CACHE_ENABLED) {
+    if (CACHE_ENABLED) {
         // Generate cache key from query data
         $cache_key = md5(
             var_export(array($username, $number, $exclude_replies, $list_slug, $hashtag), true) . HASH_SALT
@@ -31,14 +31,14 @@
         }
     
         // If cache file exists - return it
-        if(file_exists($cache_path . $cache_key)) {
+        if (file_exists($cache_path . $cache_key)) {
             header('Content-Type: application/json');
     
             echo file_get_contents($cache_path . $cache_key);
             exit;
         }
     }
-	
+    
     /**
      * Gets connection with user Twitter account
      * @param  String $cons_key     Consumer Key
@@ -59,28 +59,28 @@
     
     // Get Tweets
     if (!empty($list_slug)) {
-      $params = array(
+        $params = array(
           'owner_screen_name' => $username,
           'slug' => $list_slug,
           'per_page' => $number
       );
 
-      $url = '/lists/statuses';
-    } else if($hashtag) {
-      $params = array(
+        $url = '/lists/statuses';
+    } elseif ($hashtag) {
+        $params = array(
           'count' => $number,
           'q' => '#'.$hashtag
       );
 
-      $url = '/search/tweets';
+        $url = '/search/tweets';
     } else {
-      $params = array(
+        $params = array(
           'count' => $number,
           'exclude_replies' => $exclude_replies,
           'screen_name' => $username
       );
 
-      $url = '/statuses/user_timeline';
+        $url = '/statuses/user_timeline';
     }
 
     $tweets = $connection->get($url, $params);
@@ -89,5 +89,7 @@
     header('Content-Type: application/json');
 
     $tweets = json_encode($tweets);
-    if(CACHE_ENABLED) file_put_contents($cache_path . $cache_key, $tweets);
+    if (CACHE_ENABLED) {
+        file_put_contents($cache_path . $cache_key, $tweets);
+    }
     echo $tweets;
