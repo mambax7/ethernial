@@ -26,10 +26,8 @@
  * @link         http://eduardocortes.mx
  * @link         http://xoopsmexico.net
  */
-
 class Ethernial_Helper
 {
-
     /**
      * Get works from Professional Works
      * @param int $limit Max number of items to get
@@ -39,6 +37,7 @@ class Ethernial_Helper
     public function works($limit, $length = 50)
     {
         $works = Works_Functions::get_works($limit, null, 'public', false, '', $length);
+
         return $works;
     }
 
@@ -53,7 +52,7 @@ class Ethernial_Helper
             return null;
         }
 
-        include_once XOOPS_ROOT_PATH . '/modules/qpages/class/qppage.class.php';
+        require_once XOOPS_ROOT_PATH . '/modules/qpages/class/qppage.class.php';
 
         $id = intval($id);
         $page = new QPPage($id);
@@ -67,14 +66,15 @@ class Ethernial_Helper
 
     public function posts($limit)
     {
-        include_once XOOPS_ROOT_PATH . '/modules/mywords/class/mwfunctions.php';
+        require_once XOOPS_ROOT_PATH . '/modules/mywords/class/mwfunctions.php';
         $posts = MWFunctions::get_posts(0, $limit);
+
         return $posts;
     }
 
     public function image_url($params)
     {
-        if ($params == '') {
+        if ('' == $params) {
             return '';
         }
 
@@ -83,17 +83,18 @@ class Ethernial_Helper
 
     public function block_title($title)
     {
-        if (preg_match("/^fa /", $title)) {
+        if (preg_match('/^fa /', $title)) {
             return '<span class="' . $title . ' block-title"></span>';
-        } else {
-            return '<h4>' . $title . '</h4>';
         }
+
+        return '<h4>' . $title . '</h4>';
     }
 
     public function related_columns()
     {
         $mc = RMSettings::module_settings('mywords');
         $cols = ceil(12 / $mc->related_num);
+
         return $cols;
     }
 }

@@ -31,7 +31,7 @@ class EthernialThemeRmcommonPreload
             $etherStyles[] = 'docs.css';
         }
 
-        $styles['bootstrap']['url'] = $css_url . '/styles.php?src=' . implode(",", $etherStyles);
+        $styles['bootstrap']['url'] = $css_url . '/styles.php?src=' . implode(',', $etherStyles);
 
         /*if ( isset( $styles['mywordsmwblockscss'] ) )
             $styles['mywordsmwblockscss']['url'] = $css_url . '/styles.php?src=mywords-mwblocks.css';*/
@@ -48,7 +48,7 @@ class EthernialThemeRmcommonPreload
 
     public function eventRmcommonBlockSaved($block)
     {
-        if ($block->file != 'ethernial.tweetie.php') {
+        if ('ethernial.tweetie.php' != $block->file) {
             return $block;
         }
 
@@ -69,7 +69,7 @@ class EthernialThemeRmcommonPreload
 	// Cache Settings
 	define('CACHE_ENABLED', false);
 	define('CACHE_LIFETIME', 3600); // in seconds
-	define('HASH_SALT', md5(dirname(__FILE__)));
+	define('HASH_SALT', md5(__DIR__));
 CONFIG;
 
         $options = $block->options;

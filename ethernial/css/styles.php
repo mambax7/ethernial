@@ -1,21 +1,21 @@
 <?php
 $xoopsOption['nocommon'] = 1;
-require '../../../mainfile.php';
+require dirname(__DIR__) . '/../../mainfile.php';
 
 $css_path = XOOPS_VAR_PATH . '/caches/xoops_cache/ethernial';
 
 $files = isset($_GET['src']) ? $_GET['src'] : '';
-if ($files == '') {
-    echo "/** INVALID INPUT **/";
+if ('' == $files) {
+    echo '/** INVALID INPUT **/';
     exit();
 }
 
-$files = str_replace(array('../', '/'), '', $files);
-$files = explode(",", $files);
+$files = str_replace(['../', '/'], '', $files);
+$files = explode(',', $files);
 $css_strings = '';
 
 foreach ($files as $src) {
-    if (substr($src, -3) != 'css') {
+    if ('css' != mb_substr($src, -3)) {
         $src .= '.css';
     }
 

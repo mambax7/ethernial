@@ -12,7 +12,7 @@ class EthernialThemeXthemesPreload
             mkdir($css_path, 0777);
         }
 
-        $files = array();
+        $files = [];
 
         if ($settings->bootstrap) {
             $files[] = 'bootstrap.less';
@@ -42,23 +42,23 @@ class EthernialThemeXthemesPreload
         ob_start();
         include $less_path . '/variables.less';
         $variables = ob_get_clean();
-        include_once XOOPS_THEME_PATH . '/ethernial/assemble/compiler/Less.php';
+        require_once XOOPS_THEME_PATH . '/ethernial/assemble/compiler/Less.php';
 
         foreach ($files as $file) {
-            $less = new Less_Parser(array( 'compress' => true ));
-            $less->SetImportDirs(array(
+            $less = new Less_Parser([ 'compress' => true ]);
+            $less->SetImportDirs([
                 $less_path => '/ethernial/',
-                $less_path . '/mixins' => '/ethernial/'
-            ));
+                $less_path . '/mixins' => '/ethernial/',
+            ]);
             $file_content = str_replace('@import "variables.less";', '', file_get_contents($less_path . '/' . $file));
 
-            if ($settings->ethernial && $file == 'styles.less') {
+            if ($settings->ethernial && 'styles.less' == $file) {
                 $file_content .= $settings->css;
             }
 
             $less->parse($variables . "\n" . $file_content);
             $css = $less->getCss();
-            file_put_contents($css_path . '/' . str_replace(array('less', '/'), array('css', '-'), $file), $css);
+            file_put_contents($css_path . '/' . str_replace(['less', '/'], ['css', '-'], $file), $css);
             $css = '';
         }
     }

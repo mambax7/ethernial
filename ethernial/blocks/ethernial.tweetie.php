@@ -25,14 +25,14 @@
  * @license      GPL v2
  * @link         http://eduardocortes.mx
  * @link         http://xoopsmexico.net
+ * @param mixed $options
  */
-
 function ethernial_tweetie_show($options)
 {
     RMTemplate::get()->add_script(XOOPS_THEME_URL . '/ethernial/blocks/tweetie/tweetie.min.js');
     $params = '{';
     foreach ($options as $name => $value) {
-        if ($value == '') {
+        if ('' == $value) {
             continue;
         }
 
@@ -44,18 +44,18 @@ function ethernial_tweetie_show($options)
                 break;
             case 'date':
                 $name = 'dateFormat';
-                $params .= ($params == '{' ? '' : ', ') . $name . ': ' . '"' . $value . '"';
+                $params .= ('{' == $params ? '' : ', ') . $name . ': ' . '"' . $value . '"';
                 break;
             case 'replies':
                 $name = 'hideReplies';
-                $value = $value == 1 ? 'false' : 'true';
-                $params .= ($params == '{' ? '' : ', ') . $name . ': ' . $value;
+                $value = 1 == $value ? 'false' : 'true';
+                $params .= ('{' == $params ? '' : ', ') . $name . ': ' . $value;
                 break;
             case 'count':
-                $params .= ($params == '{' ? '' : ', ') . $name . ': ' . $value;
+                $params .= ('{' == $params ? '' : ', ') . $name . ': ' . $value;
                 break;
             default:
-                $params .= ($params == '{' ? '' : ', ') . $name . ': ' . '"' . $value . '"';
+                $params .= ('{' == $params ? '' : ', ') . $name . ': ' . '"' . $value . '"';
                 break;
         }
     }
@@ -141,10 +141,10 @@ function ethernial_tweetie_edit($options)
             <label for="tw-replies"><?php _e('Show replies', 'ethernial'); ?></label>
             <span class="clearfix"></span>
             <label class="checkbox-inline">
-                <input type="radio" value="1" name="options[replies]"<?php echo $options['replies']==1 ? ' checked' : ''; ?>> <?php _e('Show', 'ethernial'); ?>
+                <input type="radio" value="1" name="options[replies]"<?php echo 1 == $options['replies'] ? ' checked' : ''; ?>> <?php _e('Show', 'ethernial'); ?>
             </label>
             <label class="checkbox-inline">
-                <input type="radio" value="0" name="options[replies]"<?php echo $options['replies']==1 ? '' : ' checked'; ?>> <?php _e('Hide', 'ethernial'); ?>
+                <input type="radio" value="0" name="options[replies]"<?php echo 1 == $options['replies'] ? '' : ' checked'; ?>> <?php _e('Hide', 'ethernial'); ?>
             </label>
             <small class="help-block"><?php _e('Select "Hide" if you want to hide "@" replies as well.', 'ethernial'); ?>'</small>
         </div>
@@ -163,13 +163,14 @@ function ethernial_tweetie_edit($options)
 
     <?php
     $form = ob_get_clean();
+
     return $form;
 }
 
 /**
  * Get the mywords categories
  */
-if (!function_exists("onfocus_mywords_categories")) {
+if (!function_exists('onfocus_mywords_categories')) {
     function onfocus_mywords_categories()
     {
         static $mw_categos;
@@ -179,13 +180,13 @@ if (!function_exists("onfocus_mywords_categories")) {
             return $mw_categos;
         }
 
-        $categos = array();
+        $categos = [];
 
         MWFunctions::categos_list($categos);
 
         $mw_categos[0] = __('All categories', 'onfocus');
         foreach ($categos as $cat) {
-            $mw_categos[$cat['id_cat']] = str_repeat("&#151;", $cat['indent']) . $cat['name'];
+            $mw_categos[$cat['id_cat']] = str_repeat('&#151;', $cat['indent']) . $cat['name'];
         }
 
         return $mw_categos;
